@@ -15,6 +15,7 @@ var isTruthy = function(x) {
 isTruthy('');
 isTruthy(NaN);
 isTruthy(0);
+isTruthy(-0);
 isTruthy(null);
 isTruthy(undefined);
 isTruthy(false);
@@ -23,9 +24,9 @@ isTruthy(false);
 Invoque a função criada acima passando como parâmetro 10 valores `truthy`.
 */
 isTruthy(1);
-isTruthy(2);
-isTruthy(3);
-isTruthy(4);
+isTruthy([]);
+isTruthy({});
+isTruthy(function(){});
 isTruthy(5);
 isTruthy('a');
 isTruthy('b');
@@ -45,8 +46,15 @@ seguintes propriedades (os valores devem ser do tipo mostrado abaixo):
 - `assentos` - Number - cinco por padrão
 - `quantidadePessoas` - Number - zero por padrão
 */
-var carro = {marca: 'Fox', modelo: 'Sedan', placa: 'abc-123', ano: 2019, cor:'vermelho', quantasPortas:0, assentos: 5, quantidadePessoas: 0 };
-
+var carro = {
+  marca: 'Fox',
+  modelo: 'Sedan',
+  placa: 'abc-123',
+  ano: 2019, cor:'vermelho',
+  quantasPortas:0,
+  assentos: 5,
+  quantidadePessoas: 0
+};
 
 /*
 Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor
@@ -106,7 +114,7 @@ citado acima, no lugar de "pessoas".
 
 carro.adicionarPessoa = function(x){
   var total = carro.quantidadePessoas+x;
-  if(carro.quantidadePessoas === carro.assentos){
+  if(carro.quantidadePessoas === carro.assentos && total >= carro.assentos){
     return 'O carro já está lotado';
   }
   if(total > carro.assentos){
@@ -139,7 +147,7 @@ carro.cor; //Azul
 carro.mudarCor('verde musgo'); //verde musgo
 
 // E agora, qual a cor do carro?
-carro.cor; //verde musgo
+carro.obterCor; //verde musgo
 
 // Qual a marca e modelo do carro?
 carro.obterMarcaModelo(); //Esse carro é um Fox Sedan
